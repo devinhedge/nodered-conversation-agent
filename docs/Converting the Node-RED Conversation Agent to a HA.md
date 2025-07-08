@@ -102,149 +102,34 @@ Success in this conversion depends on careful attention to HACS requirements, th
 
 ## References
 
-[^1]: https://github.com/devinhedge/nodered-conversation-agent
+[^1]: <https://github.com/devinhedge/nodered-conversation-agent>
 
-[^2]: https://www.youtube.com/watch?v=Q8Gj0LiklRE
+[^2]: <https://www.youtube.com/watch?v=Q8Gj0LiklRE>
 
-[^3]: https://www.reddit.com/r/homeassistant/comments/i6oa0t/hacs_existing_custom_components/
+[^3]: <https://www.reddit.com/r/homeassistant/comments/i6oa0t/hacs_existing_custom_components/>
 
-[^4]: https://manifest--hacs.netlify.app/developer/integration
+[^4]: <https://manifest--hacs.netlify.app/developer/integration>
 
-[^5]: https://www.hacs.xyz/docs/publish/start/
+[^5]: <https://www.hacs.xyz/docs/publish/start/>
 
-[^6]: https://www.hacs.xyz/docs/publish/integration/
+[^6]: <https://www.hacs.xyz/docs/publish/integration/>
 
-[^7]: https://www.hacs.xyz/docs/publish/template/
+[^7]: <https://www.hacs.xyz/docs/publish/template/>
 
-[^8]: https://www.hacs.xyz/docs/use/configuration/basic/
+[^8]: <https://www.hacs.xyz/docs/use/configuration/basic/>
 
-[^9]: https://www.youtube.com/watch?v=WR2PEkRSO8o
+[^9]: <https://www.youtube.com/watch?v=WR2PEkRSO8o>
 
-[^10]: https://www.hacs.xyz/docs/publish/plugin/
+[^10]: <https://www.hacs.xyz/docs/publish/plugin/>
 
-[^11]: https://www.hacs.xyz
+[^11]: <https://www.hacs.xyz>
 
-[^12]: https://www.youtube.com/watch?v=xpqUe-TkO70
+[^12]: <https://www.youtube.com/watch?v=xpqUe-TkO70>
 
-[^13]: https://manifest--hacs.netlify.app/developer/theme/
+[^13]: <https://manifest--hacs.netlify.app/developer/theme/>
 
-[^14]: https://github.com/hacs/integration
+[^14]: <https://github.com/hacs/integration>
 
-[^15]: https://community.home-assistant.io/t/custom-component-hacs/121727
+[^15]: <https://community.home-assistant.io/t/custom-component-hacs/121727>
 
-[^16]: https://community.home-assistant.io/t/repostitory-structure-for-is-not-compliant/295074
-
-[^17]: https://www.reddit.com/r/homeassistant/comments/muxd5z/hacs_home_assistant_community_store_how_many_of/
-
-[^18]: https://www.hacs.xyz/docs/faq/custom_repositories/
-
-[^19]: https://github.com/hacs/integration/issues/563
-
-[^20]: https://www.thehomeautomationblog.com/what-is-hacs-and-how-to-use-it/
-
-[^21]: https://github.com/PiotrMachowski/Home-Assistant-custom-components-Saver
-
-[^22]: https://developers.home-assistant.io/docs/creating_integration_brand/
-
-[^23]: https://github.com/home-assistant/core/issues/84121
-
-[^24]: https://developers.home-assistant.io/docs/core/integration-quality-scale/
-
-[^25]: https://github.com/hacs/integration/issues/4423
-
-[^26]: https://developers.home-assistant.io/docs/creating_integration_manifest/
-
-[^27]: https://www.reddit.com/r/homeassistant/comments/1k0mr5n/custom_component_wont_load_into_hacs/
-
-[^28]: https://community.home-assistant.io/t/adding-resources-to-manifest-json-for-hacs/758994
-
-[^29]: https://www.influxdata.com/blog/9-home-assistant-integrations-how-use-them/
-
-[^30]: https://git.sudo.is/home-assistant/danVnest-home-assistant/src/branch/main/custom_components/hacs/manifest.json
-
-[^31]: https://beta--hacs.netlify.app/docs/publish/start
-
-[^32]: https://github.com/home-assistant/brands
-
-[^33]: https://www.hacs.xyz/docs/publish/include/
-
-[^34]: https://www.reddit.com/r/homeassistant/comments/1fezftq/list_of_homeassistant_friendly_brands/
-
-[^35]: https://manifest--hacs.netlify.app/developer/general/
-
-[^36]: https://developers.home-assistant.io/docs/creating_component_index/
-
-[^37]: https://developers.home-assistant.io/docs/core/integration-quality-scale/rules/brands/
-
-[^38]: https://flowfuse.com/node-red/core-nodes/write-file/
-
-[^39]: https://aarongodfrey.dev/home automation/building_a_home_assistant_custom_component_part_3/
-
-[^40]: https://community.home-assistant.io/t/best-practices-to-develop-and-maintain-a-custom-component/339295
-
-[^41]: https://www.youtube.com/watch?v=J0_mi7U0wCM
-
-[^42]: https://blog.thestaticturtle.fr/creating-a-custom-component-for-homeassistant/
-
-[^43]: https://github.com/nfragment/nodered-conversation-agent
-
-[^44]: https://flows.nodered.org/node/factory-agent-deepseek
-
-[^45]: https://blog.adafycheng.dev/write-a-custom-component-for-home-assistant
-
-[^46]: https://community.home-assistant.io/t/install-custom-components/423871
-
-[^47]: https://discourse.openiap.io/t/how-to-allow-multiple-node-red-agent-to-talk-to-each-other/704
-
-[^48]: https://docs.senlab.io/docs-sandbox/docs-sandbox/1.0.0/howto/internal-flows/agent-communication.html
-
-[^49]: https://community.home-assistant.io/t/question-about-custom-components-post-great-migration/111462
-
-[^50]: https://github.com/boralyl/github-custom-component-tutorial
-
-[^51]: https://community.home-assistant.io/t/node-red-conversation-agent/588856
-
-[^52]: https://www.hacs.xyz/docs/use/repositories/type/template/
-
-[^53]: https://community.home-assistant.io/t/custom-component-yet-another-template-to-help-you-start-quickly-with-cookiecutter/245056
-
-[^54]: https://github.com/Limych/ha-blueprint
-
-[^55]: https://www.reddit.com/r/homeassistant/comments/18ebjeo/trying_to_configure_hacs_but_theres_no_submit/
-
-[^56]: https://www.reddit.com/r/homeassistant/comments/1ef5shl/building_a_custom_integration_ha_integration_vs/
-
-[^57]: https://www.wolfwithsword.com/bambulab-homeassistant-blueprints/
-
-[^58]: https://docs.olivetin.app/integrations/homeassistant-integration.html
-
-[^59]: https://github.com/ludeeus/integration_blueprint
-
-[^60]: https://www.youtube.com/watch?v=zkm0yj0zbds
-
-[^61]: https://github.com/oncleben31/cookiecutter-homeassistant-custom-component
-
-[^62]: https://www.home-assistant.io/docs/automation/using_blueprints/
-
-[^63]: https://www.hacs.xyz/docs/use/repositories/type/integration/
-
-[^64]: https://cookiecutter-homeassistant-custom-component.readthedocs.io
-
-[^65]: https://www.home-assistant.io/docs/blueprint/tutorial/
-
-[^66]: https://www.youtube.com/watch?v=1aCt5Wpc6CE
-
-[^67]: https://github.com/PiotrMachowski/Home-Assistant-custom-components-Custom-Templates
-
-[^68]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/e7412c46efbf137c7488efb360badb90/f5bd3185-6041-41e1-95bc-c11c25bcbeea/767b5aef.md
-
-[^69]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/e7412c46efbf137c7488efb360badb90/c5bb8692-4467-481e-a0e7-a9341db3370b/6dae24b5.yml
-
-[^70]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/e7412c46efbf137c7488efb360badb90/c5bb8692-4467-481e-a0e7-a9341db3370b/b80904e9.json
-
-[^71]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/e7412c46efbf137c7488efb360badb90/c5bb8692-4467-481e-a0e7-a9341db3370b/3973efde.yml
-
-[^72]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/e7412c46efbf137c7488efb360badb90/c5bb8692-4467-481e-a0e7-a9341db3370b/bdc51a5d.json
-
-[^73]: https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/e7412c46efbf137c7488efb360badb90/c76c52d4-ab62-48af-bba5-e23bff6793e2/62472c13.csv
-
+[^16]: <https://community.home-assistant.io/t/repostitory-structure-for-is-not-compliant/295074>

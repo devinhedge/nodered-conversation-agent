@@ -1,8 +1,8 @@
-# HACS Integration Conversion: Agile Feature Specifications
+# 1. HACS Integration Conversion: Agile Feature Specifications
 
-## Epic: Home Assistant Custom Component HACS Integration
+## 1.1. Epic: Home Assistant Custom Component HACS Integration
 
-### Lean Canvas
+### 1.1.1. Lean Canvas
 
 | **Problem** | **Solution** | **Unique Value Proposition** |
 | :-- | :-- | :-- |
@@ -16,16 +16,15 @@
 | :-- | :-- | :-- |
 | Development time, Testing infrastructure, Documentation maintenance, Community support | Open source (no direct revenue), Increased adoption and community contributions | First-mover advantage in Node-RED conversation integration, Established user base, Deep Home Assistant ecosystem knowledge |
 
-### Business Outcome Metrics
+### 1.1.2. Business Outcome Metrics
 
 - **Primary**: 500+ HACS installations within first quarter post-conversion
 - **Secondary**: 90% installation success rate, <5% user-reported issues
 - **Tertiary**: 50+ GitHub stars, 10+ community contributions
 
+## 1.2. Product Feature 1: HACS Integration Foundation
 
-## Product Feature 1: HACS Integration Foundation
-
-### LeanUX Product Feature Definition
+### 1.2.1. LeanUX Product Feature Definition
 
 **Business Problem**: Custom component installation complexity creates barriers to user adoption and increases support overhead[^1][^2].
 
@@ -55,13 +54,13 @@
 
 **Experimentation**: A/B testing between manual installation documentation and HACS marketplace installation to measure conversion rates and user satisfaction.
 
-## Application Feature 1: Repository Prerequisites and Setup
+## 1.3. Application Feature 1: Repository Prerequisites and Setup
 
 **As a** developer converting a custom component to HACS integration
 **I want** to establish proper repository prerequisites and initial setup
 **So that** the integration meets HACS technical requirements and validation standards
 
-### Use Case Flow
+### 1.3.1. Use Case Flow
 
 **Main Flow**: Developer validates repository structure → Ensures GitHub public access → Verifies custom component organization → Confirms single integration per repository
 
@@ -69,9 +68,9 @@
 
 **Postconditions**: Repository meets basic HACS structural requirements, Ready for HACS-specific modifications
 
-### Acceptance Criteria (Gherkin Format)
+### 1.3.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.3.2.1. Unit Test Level
 
 ```gherkin
 Scenario: Repository Structure Validation
@@ -89,8 +88,7 @@ And repository permissions should allow public cloning
 And repository should have appropriate open source license
 ```
 
-
-#### API Test Level
+#### 1.3.2.2. API Test Level
 
 ```gherkin
 Scenario: Repository API Validation
@@ -101,14 +99,13 @@ And the repository should return `public: true` in visibility settings
 And the repository should contain `custom_components` directory in file tree
 ```
 
-
-## Application Feature 2: Repository Structure Compliance
+## 1.4. Application Feature 2: Repository Structure Compliance
 
 **As a** HACS integration developer
 **I want** to verify and establish proper repository file organization
 **So that** HACS can correctly identify and process the integration components
 
-### Use Case Flow
+### 1.4.1. Use Case Flow
 
 **Main Flow**: Developer reviews current structure → Identifies non-compliant elements → Reorganizes files to HACS standards → Validates new structure
 
@@ -116,9 +113,9 @@ And the repository should contain `custom_components` directory in file tree
 
 **Exception Flow**: Critical files missing → Report structural errors → Request manual intervention
 
-### Acceptance Criteria (Gherkin Format)
+### 1.4.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.4.2.1. Unit Test Level
 
 ```gherkin
 Scenario: Integration Directory Structure
@@ -136,8 +133,7 @@ And configuration schemas should be properly organized
 And no integration files should exist outside the designated directory
 ```
 
-
-#### API Test Level
+#### 1.4.2.2. API Test Level
 
 ```gherkin
 Scenario: Repository File Tree Validation
@@ -148,14 +144,13 @@ And the manifest.json file should exist at the correct path
 And all Python files should be contained within the integration directory
 ```
 
-
-## Application Feature 3: Manifest File Enhancement
+## 1.5. Application Feature 3: Manifest File Enhancement
 
 **As a** HACS integration maintainer
 **I want** to update the manifest.json file with HACS-required fields
 **So that** HACS can properly identify, install, and manage the integration
 
-### Use Case Flow
+### 1.5.1. Use Case Flow
 
 **Main Flow**: Developer opens manifest.json → Adds required HACS fields → Validates JSON syntax → Tests field completeness
 
@@ -163,9 +158,9 @@ And all Python files should be contained within the integration directory
 
 **Exception Flow**: Invalid JSON → Report syntax errors → Provide correction guidance → Retry validation
 
-### Acceptance Criteria (Gherkin Format)
+### 1.5.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.5.2.1. Unit Test Level
 
 ```gherkin
 Scenario: Required HACS Manifest Fields
@@ -184,8 +179,7 @@ And all URLs should return HTTP 200 status when accessed
 And version should follow semantic versioning format (x.y.z)
 ```
 
-
-#### API Test Level
+#### 1.5.2.2. API Test Level
 
 ```gherkin
 Scenario: Manifest Content Validation API
@@ -196,22 +190,21 @@ And the JSON should validate against HACS manifest schema
 And all external URLs in the manifest should be accessible
 ```
 
-
-## Application Feature 4: HACS Configuration File Creation
+## 1.6. Application Feature 4: HACS Configuration File Creation
 
 **As a** HACS integration developer
 **I want** to create a properly configured hacs.json file
 **So that** HACS can understand integration metadata and installation requirements
 
-### Use Case Flow
+### 1.6.1. Use Case Flow
 
 **Main Flow**: Developer creates hacs.json in repository root → Defines integration metadata → Specifies HACS-specific configuration → Validates configuration syntax
 
 **Alternate Flow**: Template-based creation → Use predefined template → Customize for specific integration → Validate customizations
 
-### Acceptance Criteria (Gherkin Format)
+### 1.6.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.6.2.1. Unit Test Level
 
 ```gherkin
 Scenario: HACS Configuration File Creation
@@ -230,8 +223,7 @@ And the file should include "homeassistant" minimum version requirement
 And the file should specify appropriate "domains" for the integration
 ```
 
-
-#### API Test Level
+#### 1.6.2.2. API Test Level
 
 ```gherkin
 Scenario: HACS Configuration API Validation
@@ -242,14 +234,13 @@ And all specified domains should be valid Home Assistant domains
 And the homeassistant version should be a valid release version
 ```
 
-
-## Application Feature 5: Automated Validation Workflows
+## 1.7. Application Feature 5: Automated Validation Workflows
 
 **As a** HACS integration maintainer
 **I want** to implement automated validation workflows
 **So that** integration quality is continuously verified and HACS compliance is maintained
 
-### Use Case Flow
+### 1.7.1. Use Case Flow
 
 **Main Flow**: Developer creates GitHub Actions workflow → Configures HACS validation → Adds Home Assistant validation → Tests workflow execution
 
@@ -257,9 +248,9 @@ And the homeassistant version should be a valid release version
 
 **Exception Flow**: Validation failures → Generate detailed error reports → Provide remediation guidance → Re-trigger validation
 
-### Acceptance Criteria (Gherkin Format)
+### 1.7.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.7.2.1. Unit Test Level
 
 ```gherkin
 Scenario: HACS Validation Workflow Creation
@@ -278,8 +269,7 @@ And Hassfest validation should pass all checks
 And workflow results should be visible in GitHub Actions
 ```
 
-
-#### API Test Level
+#### 1.7.2.2. API Test Level
 
 ```gherkin
 Scenario: GitHub Actions Workflow API Validation
@@ -290,14 +280,13 @@ And HACS validation steps should show passed status
 And workflow execution time should be under 5 minutes
 ```
 
-
-## Application Feature 6: Integration Testing and Quality Assurance
+## 1.8. Application Feature 6: Integration Testing and Quality Assurance
 
 **As a** HACS integration developer
 **I want** to thoroughly test the integration through HACS installation
 **So that** users experience reliable installation and functionality
 
-### Use Case Flow
+### 1.8.1. Use Case Flow
 
 **Main Flow**: Developer adds repository to HACS as custom repository → Tests installation process → Verifies integration functionality → Documents any issues → Iterates on fixes
 
@@ -305,9 +294,9 @@ And workflow execution time should be under 5 minutes
 
 **Exception Flow**: Installation failures → Analyze error logs → Identify root causes → Implement fixes → Retest installation
 
-### Acceptance Criteria (Gherkin Format)
+### 1.8.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.8.2.1. Unit Test Level
 
 ```gherkin
 Scenario: HACS Installation Testing
@@ -326,8 +315,7 @@ And error handling should gracefully manage invalid inputs
 And integration should not cause Home Assistant performance issues
 ```
 
-
-#### API Test Level
+#### 1.8.2.2. API Test Level
 
 ```gherkin
 Scenario: Integration API Health Check
@@ -338,22 +326,21 @@ And API responses should follow Home Assistant integration standards
 And integration should properly handle API rate limiting
 ```
 
-
-## Application Feature 7: Documentation and Community Enhancement
+## 1.9. Application Feature 7: Documentation and Community Enhancement
 
 **As a** HACS integration user
 **I want** comprehensive documentation and proper community visibility
 **So that** I can easily discover, install, and troubleshoot the integration
 
-### Use Case Flow
+### 1.9.1. Use Case Flow
 
 **Main Flow**: Developer creates comprehensive README → Adds installation instructions → Documents configuration options → Creates troubleshooting guide → Optimizes repository metadata
 
 **Alternate Flow**: Community contribution → Accept documentation improvements → Review and merge changes → Update community guidelines
 
-### Acceptance Criteria (Gherkin Format)
+### 1.9.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.9.2.1. Unit Test Level
 
 ```gherkin
 Scenario: Documentation Completeness
@@ -372,8 +359,7 @@ And optional info.md file should provide rich HACS interface content
 And documentation should explain HACS vs manual installation benefits
 ```
 
-
-#### API Test Level
+#### 1.9.2.2. API Test Level
 
 ```gherkin
 Scenario: Repository Metadata Validation
@@ -384,22 +370,21 @@ And repository topics should include relevant keywords
 And repository should have appropriate license for open source distribution
 ```
 
-
-## Application Feature 8: Release Management and Versioning
+## 1.10. Application Feature 8: Release Management and Versioning
 
 **As a** HACS integration maintainer
 **I want** to implement proper release management with version control
 **So that** users can track updates and maintain stable installations
 
-### Use Case Flow
+### 1.10.1. Use Case Flow
 
 **Main Flow**: Developer creates GitHub release → Tags version matching manifest → Provides release notes → HACS detects new version → Users receive update notifications
 
 **Alternate Flow**: Hotfix release → Create patch version → Fast-track testing → Emergency release → Notify users of critical update
 
-### Acceptance Criteria (Gherkin Format)
+### 1.10.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.10.2.1. Unit Test Level
 
 ```gherkin
 Scenario: Release Version Management
@@ -418,8 +403,7 @@ And release notes should be comprehensive and user-friendly
 And previous versions should remain accessible for rollback
 ```
 
-
-#### API Test Level
+#### 1.10.2.2. API Test Level
 
 ```gherkin
 Scenario: GitHub Releases API Validation
@@ -430,14 +414,13 @@ And release assets should be properly attached if applicable
 And release creation date should be accurately recorded
 ```
 
-
-## Application Feature 9: HACS Marketplace Integration
+## 1.11. Application Feature 9: HACS Marketplace Integration
 
 **As a** Home Assistant user
 **I want** the integration to be available through HACS marketplace or custom repository
 **So that** I can easily discover and install the integration
 
-### Use Case Flow
+### 1.11.1. Use Case Flow
 
 **Main Flow**: Developer submits integration to HACS default store → HACS team reviews submission → Integration approved and listed → Users discover via HACS interface
 
@@ -445,9 +428,9 @@ And release creation date should be accurately recorded
 
 **Exception Flow**: HACS submission rejected → Developer addresses feedback → Resubmits for review → Continues iteration until approval
 
-### Acceptance Criteria (Gherkin Format)
+### 1.11.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.11.2.1. Unit Test Level
 
 ```gherkin
 Scenario: HACS Default Store Submission
@@ -466,8 +449,7 @@ And installation should work identically to default store integrations
 And users should receive update notifications
 ```
 
-
-#### API Test Level
+#### 1.11.2.2. API Test Level
 
 ```gherkin
 Scenario: HACS Repository Validation API
@@ -478,22 +460,21 @@ And all required files should pass validation checks
 And integration metadata should be correctly parsed
 ```
 
-
-## Application Feature 10: Long-term Maintenance and Community Support
+## 1.12. Application Feature 10: Long-term Maintenance and Community Support
 
 **As a** HACS integration maintainer
 **I want** to establish sustainable maintenance practices
 **So that** the integration remains functional and community-supported over time
 
-### Use Case Flow
+### 1.12.1. Use Case Flow
 
 **Main Flow**: Developer monitors integration health → Responds to user issues → Updates for Home Assistant compatibility → Manages community contributions → Plans feature enhancements
 
 **Alternate Flow**: Community maintainer transition → Transfer repository ownership → Document maintenance procedures → Train new maintainers → Ensure continuity
 
-### Acceptance Criteria (Gherkin Format)
+### 1.12.2. Acceptance Criteria (Gherkin Format)
 
-#### Unit Test Level
+#### 1.12.2.1. Unit Test Level
 
 ```gherkin
 Scenario: Ongoing Maintenance Process
@@ -513,8 +494,7 @@ And contribution guidelines should be clear and accessible
 And community feedback should drive improvement priorities
 ```
 
-
-#### API Test Level
+#### 1.12.2.2. API Test Level
 
 ```gherkin
 Scenario: Integration Health Monitoring
@@ -525,170 +505,34 @@ And user retention should exceed 80% over 6 months
 And GitHub repository activity should indicate healthy community engagement
 ```
 
-
-## Summary
+## 1.13. Summary
 
 This comprehensive feature specification transforms the HACS conversion process into structured Agile features with clear acceptance criteria. Each feature follows industry best practices for user stories and includes both unit test and API test level validation criteria in Gherkin format[^5][^6][^7]. The features are designed to mimic use case flows as specified by Bittner and Spence[^8][^9], ensuring comprehensive coverage of the conversion process while maintaining focus on user value and technical excellence[^10][^11][^12].
 
 ---
 
-## References
+## 1.14. References
 
-[^1]: https://businessmodelanalyst.com/lean-canvas/
+[^1]: <https://businessmodelanalyst.com/lean-canvas/>
 
-[^2]: https://conceptboard.com/blog/lean-canvas-template-free-template/
+[^2]: <https://conceptboard.com/blog/lean-canvas-template-free-template/>
 
-[^3]: https://provistechnologies.com/blog/what-is-a-lean-canvas-purpose-key-metrics-model/
+[^3]: <https://provistechnologies.com/blog/what-is-a-lean-canvas-purpose-key-metrics-model/>
 
-[^4]: https://scrum-master.org/en/lean-canvas-guide-and-example-of-this-essential-lean-startup-tool/
+[^4]: <https://scrum-master.org/en/lean-canvas-guide-and-example-of-this-essential-lean-startup-tool/>
 
-[^5]: https://www.mountaingoatsoftware.com/blog/why-the-three-part-user-story-template-works-so-well
+[^5]: <https://www.mountaingoatsoftware.com/blog/why-the-three-part-user-story-template-works-so-well>
 
-[^6]: https://www.reddit.com/r/agile/comments/1d3exye/has_anyone_had_success_writing_ac_in_gherkin_for/
+[^6]: <https://www.reddit.com/r/agile/comments/1d3exye/has_anyone_had_success_writing_ac_in_gherkin_for/>
 
-[^7]: https://www.businessanalysisexperts.com/gherkin-user-stories-given-when-then-examples/
+[^7]: <https://www.businessanalysisexperts.com/gherkin-user-stories-given-when-then-examples/>
 
-[^8]: https://www.ivarjacobson.com/publications/books/use-case-modeling-book-2002
+[^8]: <https://www.ivarjacobson.com/publications/books/use-case-modeling-book-2002>
 
-[^9]: https://www.techtarget.com/searchsoftwarequality/definition/use-case
+[^9]: <https://www.techtarget.com/searchsoftwarequality/definition/use-case>
 
-[^10]: https://b-works.io/en/insights/complete-guide-to-lean-ux/
+[^10]: <https://b-works.io/en/insights/complete-guide-to-lean-ux/>
 
-[^11]: https://www.usertesting.com/blog/lean-ux-process
+[^11]: <https://www.usertesting.com/blog/lean-ux-process>
 
-[^12]: https://www.uxdesigninstitute.com/blog/what-is-lean-ux/
-
-[^13]: https://www.figma.com/templates/lean-canvas-template/
-
-[^14]: https://leantime.io/exploring-the-significance-of-key-metrics-in-the-lean-canvas-business-model/
-
-[^15]: https://ideascale.com/blog/lean-canvas-definition/
-
-[^16]: https://miro.com/templates/lean-canvas/
-
-[^17]: https://verycreatives.com/blog/lean-canvas-key-metrics
-
-[^18]: https://leantime.io/mastering-business-model-a-guide-to-completing-the-lean-canvas-model/
-
-[^19]: https://neoschronos.com/download/lean-canvas/docx/
-
-[^20]: https://www.icanpreneur.com/blog/lean-canvas-key-metrics
-
-[^21]: https://www.canva.com/online-whiteboard/lean-canvas/
-
-[^22]: https://www.score.org/chesterdelco/resource/template/lean-canvas-business-plan
-
-[^23]: https://intrapreneurnation.com/business-model/how-to-read-evaluate-lean-canvas/
-
-[^24]: https://www.leanfoundry.com/tools/lean-canvas
-
-[^25]: https://docs.google.com/document/u/1/d/1ib8g46AdyaRoUDKzZkX-MzCp5WaZTD7akfSg06m04vA/edit
-
-[^26]: https://www.femaleswitch.com/tpost/4npgi0csi1-best-elements-of-a-lean-business-model-c
-
-[^27]: https://miro.com/blog/lean-canvas/
-
-[^28]: https://leancanvas_production.s3.amazonaws.com/cms/templates/leancanvas.pdf
-
-[^29]: https://www.crazyegg.com/blog/lean-ux/
-
-[^30]: https://www.justinmind.com/ux-design/lean-ux
-
-[^31]: https://www.plainconcepts.com/lean-ux-methodology/
-
-[^32]: https://www.nngroup.com/videos/lean-ux/
-
-[^33]: https://www.quantummetric.com/lean-ux
-
-[^34]: https://www.coursera.org/articles/lean-ux
-
-[^35]: https://www.interaction-design.org/literature/article/a-simple-introduction-to-lean-ux
-
-[^36]: https://uxplanet.org/lean-ux-fast-efficient-and-collaborative-process-for-startups-that-captivates-the-ux-design-world-27d265107947
-
-[^37]: https://www.uxpin.com/studio/blog/lean-ux-process/
-
-[^38]: https://www.shopify.com/partners/blog/lean-ux
-
-[^39]: https://jeffgothelf.com/blog/how-to-use-the-lean-ux-canvas/
-
-[^40]: https://careerfoundry.com/en/blog/ux-design/lean-ux-for-beginners/
-
-[^41]: https://contentsquare.com/guides/ux/lean/
-
-[^42]: https://www.milliken.com/en-us/businesses/performance-solutions-by-milliken/blogs/importance-of-a-lean-ux-process
-
-[^43]: https://mailchimp.com/resources/lean-ux/
-
-[^44]: https://www.nngroup.com/articles/lean-ux-agile-study-guide/
-
-[^45]: https://monday.com/blog/rnd/user-story-template/
-
-[^46]: https://www.aha.io/roadmapping/guide/requirements-management/what-is-a-good-feature-or-user-story-template
-
-[^47]: https://asana.com/resources/user-stories
-
-[^48]: https://agilealliance.org/glossary/user-story-template/
-
-[^49]: https://testquality.com/gherkin-language-user-stories-and-scenarios/
-
-[^50]: https://www.projectmanagementdocs.com/wp-content/uploads/2018/08/Agile-User-Story.docx
-
-[^51]: https://www.atlassian.com/agile/project-management/user-stories
-
-[^52]: https://www.scrum.org/forum/scrum-forum/88639/acceptance-criteria-gherkin-syntax
-
-[^53]: https://www.smartsheet.com/user-story-templates
-
-[^54]: https://resources.scrumalliance.org/Article/anatomy-user-story
-
-[^55]: https://cucumber.io/docs/terms/user-story/
-
-[^56]: https://www.mountaingoatsoftware.com/agile/user-stories
-
-[^57]: https://www.altexsoft.com/blog/acceptance-criteria-purposes-formats-and-best-practices/
-
-[^58]: https://www.easyagile.com/blog/how-to-write-good-user-stories-in-agile-software-development
-
-[^59]: https://cucumber.io/docs/gherkin/reference/
-
-[^60]: https://www.rebelscrum.site/post/when-to-use-user-stories
-
-[^61]: https://www.reddit.com/r/agile/comments/12ubvwv/user_story_examples/
-
-[^62]: https://guides.visual-paradigm.com/demystifying-use-cases-scenarios-flow-of-events-and-templates/
-
-[^63]: https://www.informit.com/store/use-case-modeling-9780201709131
-
-[^64]: https://www.se.rit.edu/~swen-440/slides/instructor-specific/Kuehl/Lecture 10 Use Case Modeling Techniques.pdf
-
-[^65]: https://www.businessanalysisexperts.com/use-case-paths-functional-features/
-
-[^66]: https://dokumen.pub/use-case-modeling-0201709139-9780201709131.html
-
-[^67]: https://guides.visual-paradigm.com/a-comprehensive-guide-to-use-case-modeling/
-
-[^68]: https://guides.visual-paradigm.com/mastering-use-case-elaboration-flow-of-events-and-sequence-diagrams/
-
-[^69]: https://books.google.com/books/about/Use_Case_Modeling.html?id=zvxfXvEcQjUC
-
-[^70]: https://aserg.codeberg.page/shu-dev-process/en/modelling/analysis/use-case-guidance/
-
-[^71]: https://www.figma.com/resource-library/what-is-a-use-case/
-
-[^72]: https://dl.acm.org/doi/10.5555/557126
-
-[^73]: https://www.numberanalytics.com/blog/mastering-use-case-modeling
-
-[^74]: https://en.wikipedia.org/wiki/Use_case
-
-[^75]: https://archive.org/details/usecasemodeling00kurt
-
-[^76]: https://www.geeksforgeeks.org/system-design/use-case-diagram/
-
-[^77]: https://www.ivarjacobson.com/publications/articles/use-cases-ultimate-guide
-
-[^78]: https://www.thriftbooks.com/w/use-case-modeling_ian-spence_kurt-bittner/511254/
-
-[^79]: https://www.utm.mx/~caff/doc/OpenUPWeb/openup/guidances/concepts/use_case_model_CD178AF9.html
-
+[^12]: <https://www.uxdesigninstitute.com/blog/what-is-lean-ux/>

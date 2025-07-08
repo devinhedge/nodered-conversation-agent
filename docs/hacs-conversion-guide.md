@@ -19,7 +19,7 @@ The Home Assistant Community Store (HACS) is a custom integration that provides 
 
 Ensure your repository follows the correct structure for HACS integrations:
 
-```
+```text
 ROOT_OF_THE_REPO/
 ├── custom_components/
 │   └── nodered_conversation/
@@ -37,6 +37,7 @@ ROOT_OF_THE_REPO/
 ```
 
 **Key Requirements:**
+
 - Only one integration per repository
 - Integration files must be in `custom_components/{domain}/`
 - Repository must be public on GitHub
@@ -59,6 +60,7 @@ Create a `hacs.json` file in the root of your repository:
 ```
 
 **Key Fields Explained:**
+
 - `name`: Display name in HACS UI
 - `homeassistant`: Minimum Home Assistant version required
 - `domains`: List of Home Assistant domains this integration provides
@@ -84,6 +86,7 @@ Ensure your `custom_components/nodered_conversation/manifest.json` includes all 
 ```
 
 **Required Fields for HACS:**
+
 - `domain`: Must match directory name
 - `name`: Human-readable integration name
 - `version`: Semantic version (required for custom components)
@@ -94,10 +97,13 @@ Ensure your `custom_components/nodered_conversation/manifest.json` includes all 
 ### Step 4: Add GitHub Repository Metadata
 
 #### Repository Description
+
 Add a clear, concise description to your GitHub repository that explains the integration's purpose.
 
 #### Repository Topics
+
 Add relevant topics to your GitHub repository for better discoverability:
+
 - `home-assistant`
 - `custom-component`
 - `node-red`
@@ -107,6 +113,7 @@ Add relevant topics to your GitHub repository for better discoverability:
 ### Step 5: Create GitHub Workflows (Recommended)
 
 #### HACS Validation Workflow
+
 Create `.github/workflows/validate.yml`:
 
 ```yaml
@@ -130,6 +137,7 @@ jobs:
 ```
 
 #### Hassfest Validation Workflow
+
 Create `.github/workflows/hassfest.yml`:
 
 ```yaml
@@ -154,14 +162,18 @@ jobs:
 ### Step 6: Improve Documentation
 
 #### Update README.md
+
 Ensure your README includes:
+
 - Clear installation instructions for both HACS and manual installation
 - Configuration examples
 - Troubleshooting information
 - Node-RED flow setup instructions
 
 #### Create info.md (Optional)
+
 For a richer HACS experience, create an `info.md` file with:
+
 - Detailed feature descriptions
 - Screenshots or examples
 - Configuration options
@@ -206,16 +218,19 @@ For inclusion in HACS default repositories:
 ## Common Issues and Solutions
 
 ### Repository Structure Not Compliant
+
 - Ensure `custom_components/{domain}/` structure is correct
 - Check that `hacs.json` exists in repository root
 - Verify `manifest.json` contains all required fields
 
 ### Validation Failures
+
 - Run HACS validation locally before pushing
 - Check Home Assistant version compatibility
 - Ensure all required fields are present in manifest
 
 ### Missing Dependencies
+
 - List all Python package requirements in `manifest.json`
 - Test with fresh Home Assistant installation
 - Document any external service dependencies
@@ -223,18 +238,21 @@ For inclusion in HACS default repositories:
 ## Best Practices
 
 ### Code Quality
+
 - Follow Home Assistant coding standards
 - Add type hints where possible
 - Include proper error handling
 - Add logging for debugging
 
 ### User Experience
+
 - Implement config flow for UI-based setup
 - Provide clear error messages
 - Include comprehensive documentation
 - Add translations for different languages
 
 ### Maintenance
+
 - Keep dependencies up to date
 - Test with latest Home Assistant versions
 - Respond to user issues promptly

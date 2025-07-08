@@ -1,6 +1,7 @@
 # HACS Integration Conversion Process
 
 ## Overview
+
 This document provides PlantUML and Mermaid diagrams to illustrate the step-by-step process of converting a Home Assistant custom component into a HACS (Home Assistant Community Store) integration.
 
 ## 1. High-Level Conversion Workflow (Mermaid)
