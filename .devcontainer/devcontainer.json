@@ -1,0 +1,33 @@
+{
+    "name": "Home Assistant NodeRed Conversation Agent",
+    "dockerFile": "Dockerfile",
+    "context": "..",
+    "postCreateCommand": "pip install -r requirements.txt -r requirements_dev.txt && mkdir -p /config/custom_components/nodered_conversation && cp -r /workspaces/nodered-conversation-agent/custom_components/nodered_conversation/* /config/custom_components/nodered_conversation/",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "github.vscode-pull-request-github",
+                "ryanluker.vscode-coverage-gutters",
+                "ms-azuretools.vscode-docker"
+            ],
+            "settings": {
+                "python.pythonPath": "/usr/local/bin/python",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": true,
+                "python.formatting.provider": "black",
+                "editor.formatOnSave": true,
+                "editor.codeActionsOnSave": {
+                    "source.organizeImports": "always"
+                }
+            }
+        }
+    },
+    "remoteUser": "vscode",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/nodered-conversation-agent,type=bind,consistency=cached",
+    "workspaceFolder": "/workspaces/nodered-conversation-agent",
+    "mounts": [
+        "source=${localWorkspaceFolder}/custom_components/nodered_conversation,target=/config/custom_components/nodered_conversation,type=bind,consistency=cached"
+    ]
+}

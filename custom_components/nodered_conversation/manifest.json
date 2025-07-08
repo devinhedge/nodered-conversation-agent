@@ -5,7 +5,11 @@
   "config_flow": true,
   "dependencies": ["conversation"],
   "documentation": "https://github.com/devinhedge/nodered-conversation/blob/main/README.md",
+  "issue_tracker": "https://github.com/devinhedge/nodered-conversation/issues",
   "integration_type": "service",
   "iot_class": "local_polling",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "quality_scale": "silver",
+  "requirements": [],
+  "homeassistant": "2025.1.4"
 }

@@ -34,7 +34,8 @@
 │   ├── workflows/
 │   │   ├── hassfest.yaml
 │   │   ├── validate.yaml
-│   │   └── release.yaml
+│   │   ├── release.yaml
+│   │   └── dev.yaml
 │   └── ISSUE_TEMPLATE/
 │       ├── bug_report.md
 │       └── feature_request.md
@@ -84,6 +85,7 @@
 9. Split requirements into `requirements.txt` and `requirements_dev.txt`.
 10. Remove `TODO.md` and `.coveragerc` from the root directory.
 11. Update `.gitignore` to include HACS-specific and development environment entries.
+12. Create `.github/workflows/dev.yaml` for the development workflow.
 
 ## 2. Infrastructure as Code (IaC) Implementation
 
@@ -103,6 +105,13 @@
 1. Implement `.github/workflows/hassfest.yaml` for validating the integration with Home Assistant standards.
 2. Implement `.github/workflows/validate.yaml` for HACS validation and additional checks.
 3. Keep `.github/workflows/release.yaml` for automating the release process.
+4. Implement `.github/workflows/dev.yaml` for the development workflow:
+   - Trigger on pushes to the `dev` branch
+   - Check code style
+   - Perform automated code review
+   - Run unit tests
+   - Automatically push to `int` branch if tests pass
+   - Create issues for code review findings without stopping the build
 
 ### Issue Templates
 
@@ -182,6 +191,43 @@ Create a new `hacs.json` file in the root directory with the following content:
 3. Include detailed release notes in the GitHub release, referencing the CHANGELOG.md.
 4. Implement a Git branching strategy (e.g., GitFlow) for future development.
 
+## 8. Development Workflow
+
+### dev.yaml Workflow
+
+Create a new `.github/workflows/dev.yaml` file with the following functionality:
+
+1. Trigger:
+   - On push to the `dev` branch
+
+2. Jobs:
+   a. Code Style Check:
+      - Use tools like flake8, black, or pylint to check code style
+      - Report any style violations
+
+   b. Automated Code Review:
+      - Utilize a tool like CodeQL or SonarCloud for automated code review
+      - Create GitHub issues for any findings
+      - Do not fail the workflow based on review results
+
+   c. Unit Tests:
+      - Set up the test environment
+      - Run all unit tests
+      - Report test results
+
+   d. Push to Integration:
+      - If all unit tests pass, automatically push the code to the `int` branch
+
+3. Issue Creation:
+   - Implement a step to create GitHub issues for any code style violations or code review findings
+   - Use GitHub API or a GitHub Action to create issues
+
+4. Notifications:
+   - Set up notifications for workflow success or failure
+   - Notify relevant team members of new issues created
+
+This workflow will ensure that all code pushed to the `dev` branch is automatically checked, tested, and integrated, while also creating trackable issues for any findings that need to be addressed.
+
 ## Implementation Steps
 
 1. Repository and File Structure Changes
@@ -191,5 +237,9 @@ Create a new `hacs.json` file in the root directory with the following content:
 5. Documentation Updates
 6. Testing Implementation
 7. Version Control and Release Setup
+8. Development Workflow Setup
+   - Create and configure the dev.yaml workflow
+   - Set up necessary secrets and permissions for the workflow
+   - Test the workflow to ensure it functions as expected
 
-After completing these steps, submit the integration to HACS for review and inclusion in the default repositories.
+After completing these steps, including the new development workflow, submit the integration to HACS for review and inclusion in the default repositories.

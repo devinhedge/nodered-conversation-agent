@@ -1,7 +1,6 @@
 """The NodeRed Conversation integration."""
 from __future__ import annotations
 
-from functools import partial
 import logging
 import json
 import base64
@@ -10,51 +9,50 @@ from typing import Literal, Any
 import aiohttp
 import voluptuous as vol
 
-# pylint: disable=import-error
-from homeassistant.components import conversation  # type: ignore
-from homeassistant.config_entries import ConfigEntry  # type: ignore
-from homeassistant.const import MATCH_ALL  # type: ignore
-from homeassistant.core import HomeAssistant  # type: ignore
-from homeassistant.helpers import config_validation as cv, intent  # type: ignore
-from homeassistant.util import ulid  # type: ignore
-from homeassistant.exceptions import HomeAssistantError  # type: ignore
-# pylint: enable=import-error
+from homeassistant.components import conversation
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import MATCH_ALL
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers import config_validation as cv, intent
+from homeassistant.util import ulid
+from homeassistant.exceptions import HomeAssistantError
 
 from .const import (
     CONF_NODERED_URL,
     CONF_NODERED_USER,
     CONF_NODERED_PASS,
     DOMAIN,
+    NAME,
+    VERSION,
+    SERVICE_PROCESS_CONVERSATION,
+    ATTR_MESSAGE,
+    ERROR_CANNOT_CONNECT,
+    ERROR_INVALID_AUTH,
+    ERROR_UNKNOWN,
 )
 
 _LOGGER = logging.getLogger(__name__)
-SERVICE_GENERATE_IMAGE = "generate_image"
 
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
-ERROR_CANNOT_CONNECT = "cannot_connect"
-ERROR_INVALID_AUTH = "invalid_auth"
-ERROR_UNKNOWN = "unknown"
-
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up NodeRed Conversation from a config entry."""
-    _LOGGER.info("Setting up NodeRed Conversation integration")
+    _LOGGER.info("Setting up %s integration version %s", NAME, VERSION)
 
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = entry.data[CONF_NODERED_URL]
 
-    conversation.async_set_agent(hass, entry, NodeRedAgent(hass, entry))
+    agent = NodeRedAgent(hass, entry)
+    conversation.async_set_agent(hass, entry, agent)
     return True
-
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload NodeRed Conversation."""
-    _LOGGER.info("Unloading NodeRed Conversation integration")
+    _LOGGER.info("Unloading %s integration", NAME)
     hass.data[DOMAIN].pop(entry.entry_id)
     conversation.async_unset_agent(hass, entry)
     return True
 
-
-class NodeRedAgent(conversation.AbstractConversationAgent):
+class NodeRedAgent:
     """NodeRed Conversation agent."""
 
     def __init__(self, hass: HomeAssistant, entry: ConfigEntry) -> None:
@@ -68,20 +66,6 @@ class NodeRedAgent(conversation.AbstractConversationAgent):
         """Return a list of supported languages."""
         return MATCH_ALL
     
-    async def call_post_request(self, url: str, auth: str, data: dict[str, Any]) -> str:
-        """Make a POST request to the NodeRed endpoint."""
-        try:
-            # Warning: SSL verification is disabled. This should be enabled in production.
-            _LOGGER.warning("SSL verification is disabled. This is not recommended for production use.")
-            async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False)) as session:
-                session.headers.update({"Authorization": f"Basic {auth}"})
-                async with session.post(url, data=data) as response:
-                    response.raise_for_status()
-                    return await response.text()
-        except aiohttp.ClientError as err:
-            _LOGGER.error("Error connecting to NodeRed endpoint: %s", err)
-            raise HomeAssistantError(ERROR_CANNOT_CONNECT) from err
-
     async def async_process(
         self, user_input: conversation.ConversationInput
     ) -> conversation.ConversationResult:
@@ -105,24 +89,20 @@ class NodeRedAgent(conversation.AbstractConversationAgent):
 
         messages.append({"role": "user", "content": user_input.text})
 
-        content = {'content': user_input.text, 'chatid': conversation_id, "messages": json.dumps(messages)}
+        content = {ATTR_MESSAGE: user_input.text, 'chatid': conversation_id, "messages": json.dumps(messages)}
         _LOGGER.debug("Content sent to NodeRed: %s", content)
         nodered_auth = base64.b64encode(f"{nodered_user}:{nodered_pass}".encode()).decode()
         
         try:
-            result = await self.call_post_request(nodered_url, nodered_auth, content)
+            if not isinstance(nodered_url, str):
+                raise ValueError("NodeRed URL is not a string")
+            result = await self._call_post_request(nodered_url, nodered_auth, content)
             result = json.loads(result)
-        except HomeAssistantError as err:
+        except (HomeAssistantError, ValueError, json.JSONDecodeError) as err:
             _LOGGER.error("Error processing request: %s", err)
             result = {
                 "finish_reason": "error",
                 "message": { "content": f"Error: {err}" }
-            }
-        except json.JSONDecodeError as err:
-            _LOGGER.error("Error decoding JSON response: %s", err)
-            result = {
-                "finish_reason": "error",
-                "message": { "content": "Error: Invalid response from NodeRed" }
             }
 
         _LOGGER.debug("Result from NodeRed: %s", result)
@@ -145,3 +125,17 @@ class NodeRedAgent(conversation.AbstractConversationAgent):
         return conversation.ConversationResult(
             response=intent_response, conversation_id=conversation_id
         )
+
+    async def _call_post_request(self, url: str, auth: str, data: dict[str, Any]) -> str:
+        """Make a POST request to the NodeRed endpoint."""
+        try:
+            # Warning: SSL verification is disabled. This should be enabled in production.
+            _LOGGER.warning("SSL verification is disabled. This is not recommended for production use.")
+            async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False)) as session:
+                session.headers.update({"Authorization": f"Basic {auth}"})
+                async with session.post(url, data=data) as response:
+                    response.raise_for_status()
+                    return await response.text()
+        except aiohttp.ClientError as err:
+            _LOGGER.error("Error connecting to NodeRed endpoint: %s", err)
+            raise HomeAssistantError(ERROR_CANNOT_CONNECT) from err
