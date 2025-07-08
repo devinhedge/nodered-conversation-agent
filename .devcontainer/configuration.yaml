@@ -1,0 +1,40 @@
+# Minimal configuration for Home Assistant development environment
+default_config:
+
+# Enable HACS
+hacs:
+  experimental: true
+
+# Enable logging
+logger:
+  default: info
+  logs:
+    hacs: debug
+
+# Example automation for testing (to be used after successful installation)
+automation:
+  - alias: "Test NodeRed Conversation"
+    trigger:
+      platform: state
+      entity_id: input_boolean.test_nodered_conversation
+    action:
+      - service: conversation.process
+        data:
+          text: "Hello NodeRed"
+
+# Example input boolean for triggering test automation
+input_boolean:
+  test_nodered_conversation:
+    name: Test NodeRed Conversation
+    initial: off
+    icon: mdi:test-tube
+
+# Note: The nodered_conversation integration will be installed via HACS
+# and doesn't need to be explicitly declared here.
+
+# HACS custom repository configuration
+# This should be added manually after the environment is set up:
+# hacs:
+#   custom_repositories:
+#     - repo: "your-github-username/nodered-conversation-agent"
+#       category: "integration"
