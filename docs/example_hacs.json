@@ -1,0 +1,12 @@
+{
+  "name": "Node-RED Conversation Agent",
+  "content_in_root": false,
+  "zip_release": false,
+  "hide_default_branch": false,
+  "homeassistant": "2023.8.0",
+  "domains": [
+    "conversation"
+  ],
+  "country": [],
+  "render_readme": false
+}

@@ -1,0 +1,102 @@
+
+@startuml
+!define RECTANGLE class
+
+start
+:Check Prerequisites;
+note right
+  - Public GitHub repository
+  - Existing custom component
+  - Home Assistant compatibility
+end note
+
+:Assess Current Repository Structure;
+
+if (Repository structure compliant?) then (no)
+  :Reorganize Files;
+  :Create custom_components/{domain} directory;
+  :Move integration files to proper location;
+else (yes)
+  :Continue with current structure;
+endif
+
+:Create/Update hacs.json;
+note right
+  - Set display name
+  - Define minimum HA version
+  - Configure content settings
+  - Set render_readme option
+end note
+
+:Update manifest.json;
+note right
+  - Add version field
+  - Include documentation URL
+  - Add issue tracker URL
+  - Set codeowners
+end note
+
+:Create GitHub Actions Workflows;
+split
+  :Setup HACS Validation;
+  note right
+    - Validate HACS compliance
+    - Check repository structure
+  end note
+split again
+  :Setup Hassfest Validation;
+  note right
+    - Validate Home Assistant standards
+    - Check manifest compliance
+  end note
+end split
+
+:Create/Update Documentation;
+split
+  :Update README.md;
+split again
+  :Create info.md (optional);
+  note right
+    Rich content for HACS UI
+  end note
+split again
+  :Add installation instructions;
+end split
+
+:Test Integration Locally;
+
+if (Local testing successful?) then (no)
+  :Debug and Fix Issues;
+  :Retry Local Testing;
+else (yes)
+  :Continue;
+endif
+
+:Create GitHub Release;
+note right
+  - Tag version
+  - Include release notes
+  - Provide installation assets
+end note
+
+:Test via HACS Custom Repository;
+
+if (HACS testing successful?) then (no)
+  :Fix HACS compatibility issues;
+  :Update configuration files;
+  :Create new release;
+else (yes)
+  :Continue;
+endif
+
+:Submit for HACS Default Repository;
+note right
+  - Follow HACS submission guidelines
+  - Provide integration details
+  - Wait for community review
+end note
+
+:Integration Available in HACS;
+
+stop
+@enduml
