@@ -4,7 +4,15 @@ name: Validate
 
 on:
   push:
+    branches:
+      - int
+      - test
+      - stage
   pull_request:
+    branches:
+      - int
+      - test
+      - stage
   schedule:
     - cron: "0 0 * * *"
 
