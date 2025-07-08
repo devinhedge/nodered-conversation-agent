@@ -162,3 +162,9 @@ cython_debug/
 
 # Docs directory
 #docs/
+
+# Ignore everything in docs/x-reference
+docs/x-reference/*
+
+# But don't ignore update_docs.zsh
+!docs/x-reference/update_docs.zsh

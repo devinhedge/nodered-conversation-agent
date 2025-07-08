@@ -14,7 +14,7 @@ ToDo:
 *  Load the custom component into home assistant
 *  Restart home assistant
 *  Add the NodeRed Conversation integration
-  add the url for nodered. should be something like https://192.168.1.1:1880/endpoint/gpt. add a username and password to be used in the node red flow.
+   add the url for nodered. should be something like https://192.168.1.1:1880/endpoint/gpt. add a username and password to be used in the node red flow.
 *  Select the new Conversation agent. Settings>Voice Assistants>Home Assistant>Conversation agent.
 *  Copy the nodered_sample_flow.json and import into node red.
 *  Make sure you change the username and password in the auth node
@@ -22,3 +22,56 @@ ToDo:
 *  For localAI: api key doesnt matter. But you will need to add the url or ip address to your server.
 
 *  Profit
+
+## Development
+
+### Setting up the development environment
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/nodered_conversation.git
+   cd nodered_conversation
+   ```
+
+2. Create a virtual environment and activate it:
+   ```
+   python3 -m venv .venv
+   source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
+   ```
+
+3. Install the development dependencies:
+   ```
+   pip install -r requirements-dev.txt
+   ```
+
+### Running tests with coverage
+
+To run the tests with coverage reporting, use the following command:
+
+```
+pytest tests/test_repository_structure_validator.py -v --cov=custom_components.nodered_conversation --cov-report=term-missing --cov-report=html
+```
+
+This will run the tests, display a coverage report in the terminal, and generate an HTML coverage report in the `htmlcov` directory.
+
+To view the HTML coverage report, open the `htmlcov/index.html` file in your web browser.
+
+## Offline Reference Documentation for AI Agents
+
+This project includes an offline copy of the HACS documentation for reference. This documentation is primarily intended for AI Agents to use while coding. You can find it in the `docs/x-reference/` directory.
+
+The offline documentation provides AI Agents with quick access to HACS guidelines without requiring an internet connection. It helps AI Agents understand the context and best practices for contributing to HACS-related projects while assisting with coding tasks.
+
+### Updating the Offline Documentation
+
+To keep the offline documentation up-to-date, a zsh script has been provided in the `docs/x-reference/` directory:
+
+- `update_docs.zsh`: This script clones the latest HACS documentation from the official GitHub repository and updates the local copy in the `docs/x-reference/` directory.
+
+To update the documentation, run the following command from the project root:
+
+```
+./docs/x-reference/update_docs.zsh
+```
+
+This will refresh the offline documentation with the latest content from the HACS documentation repository. The script clones the entire documentation source, ensuring that all relevant files and structure are preserved.
