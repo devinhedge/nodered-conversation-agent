@@ -3,6 +3,32 @@ Here's a detailed plan to accomplish our task:
 Update Repository Structure:
 
 - [ ] Ensure the integration is in the correct directory (custom_components/nodered_conversation)
+
+  - [ ] Verify the current directory structure:
+
+    - [ ] Confirm that all necessary files are present in the custom_components/nodered_conversation/ directory
+    - [ ] Check for any misplaced files or directories
+
+  - [ ] Document the current directory structure"
+
+    - [ ] Create or update documentation to reflect the correct file locations
+    - [ ] Include a directory tree in the documentation for easy reference
+
+  - [ ] Implement a directory structure validation check:
+
+    - [ ] Create a script or test that verifies the correct directory structure
+    - [ ] Include this check in the project's CI/CD pipeline
+
+  - [ ] Review and update related configuration files:
+
+    - [ ] Ensure that any references to the integration's location in configuration files are correct
+    - [ ] Update the HACS configuration file (if applicable) to reflect the correct directory structure
+
+  - [ ] Create a guide for contributors:
+
+    - [ ] Develop guidelines for maintaining the correct directory structure
+    - [ ] Include this information in the project's contributing documentation
+
 - [ ] Verify that the directory name matches the integration domain (nodered_conversation)
 
 Update manifest.json:
