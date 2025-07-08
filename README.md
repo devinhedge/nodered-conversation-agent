@@ -1,16 +1,14 @@
 # NodeRed Conversation
 
-Custom Component for Home Assistant that creates a NodeRed Conversation Agent (modified from OpenAI conversation agent). This integration sends conversations to and from Node-RED to be used with LocalAI or OpenAI.
+## Introduction 
+
+This is a complete fork and refactor of the initial work of @roblandry with his [Node-RED Conversation Custom Component](https://github.com/roblandry/nodered_conversation).
+
+This HACS Integration for Home Assistant that creates a NodeRed Conversation Agent (modified from OpenAI conversation agent). This integration sends conversations to and from Node-RED to be used with LocalAI, any OpenAI v1 API endpoint, n8n, or OpenRouter.
 
 ## Status
 
 This integration is now in a more stable beta version with significant improvements in security, error handling, and code quality. While it's more robust, it's still subject to changes. Contributions to improve and enhance the integration are welcome!
-
-### Todo
-- [ ] Implement red coloring for error messages
-- [ ] Further improve Config Flow/Options functionality
-- [ ] Expand test coverage
-- [ ] Add support for additional AI providers
 
 ## Installation
 
@@ -38,24 +36,9 @@ This integration is now in a more stable beta version with significant improveme
 
 ## Development
 
-### Setting up the development environment
+First setup of a proper Home Assistant Development Environment based on [the Home Assistant way](https://developers.home-assistant.io/docs/development_environment).
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/devinhedge/nodered-conversation.git
-   cd nodered-conversation
-   ```
-
-2. Create a virtual environment and activate it:
-   ```
-   python3 -m venv .venv
-   source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
-   ```
-
-3. Install the development dependencies:
-   ```
-   pip install -r requirements-dev.txt
-   ```
+TODO: Fill this in.
 
 ### Running tests
 

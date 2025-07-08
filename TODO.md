@@ -1,4 +1,13 @@
+# TODO for the nodered conversation integration
+
 Here's a detailed plan to accomplish our task:
+
+## From the [initial repository](https://github.com/roblandry/nodered_conversation)
+
+- [ ] Implement red coloring for error messages
+- [ ] Further improve Config Flow/Options functionality
+- [ ] Expand test coverage
+- [ ] Add support for additional AI providers
 
 Update Repository Structure:
 
