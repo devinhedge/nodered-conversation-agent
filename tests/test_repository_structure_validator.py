@@ -21,7 +21,8 @@ sys.modules['homeassistant.util'] = MagicMock()
 
 from custom_components.nodered_conversation.repository_structure_validator import (
     check_custom_components_directory,
-    verify_single_integration_subdirectory
+    verify_single_integration_subdirectory,
+    confirm_integration_files_location
 )
 
 
@@ -101,3 +102,63 @@ def test_verify_single_integration_subdirectory_parametrized(mock_filesystem, nu
     
     with patch('os.getcwd', return_value=str(mock_filesystem)):
         assert verify_single_integration_subdirectory() is expected
+
+# New tests for confirm_integration_files_location
+
+def test_confirm_integration_files_location_success(mock_filesystem):
+    """Test when all integration files are in the correct location."""
+    custom_components_dir = mock_filesystem / "custom_components"
+    integration_dir = custom_components_dir / "my_integration"
+    integration_dir.mkdir()
+    (integration_dir / "__init__.py").touch()
+    (integration_dir / "manifest.json").touch()
+    (integration_dir / "config_flow.py").touch()
+
+    with patch('os.getcwd', return_value=str(mock_filesystem)):
+        assert confirm_integration_files_location() is True
+
+def test_confirm_integration_files_location_missing_file(mock_filesystem):
+    """Test when an essential file is missing."""
+    custom_components_dir = mock_filesystem / "custom_components"
+    integration_dir = custom_components_dir / "my_integration"
+    integration_dir.mkdir()
+    (integration_dir / "__init__.py").touch()
+    (integration_dir / "manifest.json").touch()
+    # config_flow.py is missing
+
+    with patch('os.getcwd', return_value=str(mock_filesystem)):
+        assert confirm_integration_files_location() is False
+
+def test_confirm_integration_files_location_misplaced_file(mock_filesystem):
+    """Test when an integration file is misplaced."""
+    custom_components_dir = mock_filesystem / "custom_components"
+    integration_dir = custom_components_dir / "my_integration"
+    integration_dir.mkdir()
+    (integration_dir / "__init__.py").touch()
+    (integration_dir / "manifest.json").touch()
+    (integration_dir / "config_flow.py").touch()
+    (custom_components_dir / "misplaced.py").touch()
+
+    with patch('os.getcwd', return_value=str(mock_filesystem)):
+        assert confirm_integration_files_location() is False
+
+def test_confirm_integration_files_location_error():
+    """Test when there's an error accessing the filesystem."""
+    with patch('os.getcwd', side_effect=OSError("Mock OSError")):
+        assert confirm_integration_files_location() is False
+
+@pytest.mark.parametrize("files,expected", [
+    (["__init__.py", "manifest.json", "config_flow.py"], True),
+    (["__init__.py", "manifest.json"], False),
+    (["__init__.py", "manifest.json", "config_flow.py", "extra.py"], True),
+])
+def test_confirm_integration_files_location_parametrized(mock_filesystem, files, expected):
+    """Parametrized test for different file configurations."""
+    custom_components_dir = mock_filesystem / "custom_components"
+    integration_dir = custom_components_dir / "my_integration"
+    integration_dir.mkdir()
+    for file in files:
+        (integration_dir / file).touch()
+
+    with patch('os.getcwd', return_value=str(mock_filesystem)):
+        assert confirm_integration_files_location() is expected
