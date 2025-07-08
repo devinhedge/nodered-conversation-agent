@@ -1,8 +1,8 @@
 # TODO List
 
 - [x] 1.1.1.1.1: Implement Custom Components Directory Check
-- [ ] 1.1.1.1.2: Verify Single Integration Subdirectory
-- [ ] 1.1.1.1.3: Validate Integration Domain Name Match
+- [x] 1.1.1.1.2: Verify Single Integration Subdirectory
+- [x] 1.1.1.1.3: Validate Integration Domain Name Match
 - [ ] 1.1.1.1.4: Confirm Integration Files Location
 - [ ] 1.1.1.1.5: Create Unit Tests for Repository Structure Validation
 - [ ] 1.1.1.1.6: Implement Error Handling and Logging

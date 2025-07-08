@@ -19,7 +19,10 @@ sys.modules['homeassistant.core'] = MagicMock()
 sys.modules['homeassistant.helpers'] = MagicMock()
 sys.modules['homeassistant.util'] = MagicMock()
 
-from custom_components.nodered_conversation.repository_structure_validator import check_custom_components_directory
+from custom_components.nodered_conversation.repository_structure_validator import (
+    check_custom_components_directory,
+    verify_single_integration_subdirectory
+)
 
 
 @pytest.fixture
@@ -56,3 +59,45 @@ def test_check_custom_components_directory_parametrized(mock_filesystem, dir_exi
     
     with patch('os.getcwd', return_value=str(mock_filesystem)):
         assert check_custom_components_directory() is dir_exists
+
+
+def test_verify_single_integration_subdirectory_success(mock_filesystem):
+    """Test when there's exactly one subdirectory in custom_components."""
+    custom_components_dir = mock_filesystem / "custom_components"
+    (custom_components_dir / "my_integration").mkdir()
+    
+    with patch('os.getcwd', return_value=str(mock_filesystem)):
+        assert verify_single_integration_subdirectory() is True
+
+
+def test_verify_single_integration_subdirectory_no_subdirectory(mock_filesystem):
+    """Test when there are no subdirectories in custom_components."""
+    with patch('os.getcwd', return_value=str(mock_filesystem)):
+        assert verify_single_integration_subdirectory() is False
+
+
+def test_verify_single_integration_subdirectory_multiple_subdirectories(mock_filesystem):
+    """Test when there are multiple subdirectories in custom_components."""
+    custom_components_dir = mock_filesystem / "custom_components"
+    (custom_components_dir / "integration1").mkdir()
+    (custom_components_dir / "integration2").mkdir()
+    
+    with patch('os.getcwd', return_value=str(mock_filesystem)):
+        assert verify_single_integration_subdirectory() is False
+
+
+def test_verify_single_integration_subdirectory_error():
+    """Test when there's an error accessing the filesystem."""
+    with patch('os.getcwd', side_effect=OSError("Mock OSError")):
+        assert verify_single_integration_subdirectory() is False
+
+
+@pytest.mark.parametrize("num_subdirs,expected", [(0, False), (1, True), (2, False)])
+def test_verify_single_integration_subdirectory_parametrized(mock_filesystem, num_subdirs, expected):
+    """Parametrized test for different numbers of subdirectories."""
+    custom_components_dir = mock_filesystem / "custom_components"
+    for i in range(num_subdirs):
+        (custom_components_dir / f"integration{i+1}").mkdir()
+    
+    with patch('os.getcwd', return_value=str(mock_filesystem)):
+        assert verify_single_integration_subdirectory() is expected
