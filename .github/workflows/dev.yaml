@@ -78,12 +78,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/code_review_finding.md
-
-  notify:
-    name: Send Notifications
-    needs: [push_to_int, create_issues]
-    runs-on: ubuntu-latest
-    if: always()
-    steps:
-      - name: Send notification
-        uses: 
