@@ -58,3 +58,6 @@ docs/x-reference/*
 
 # But don't ignore update_docs.zsh
 !docs/x-reference/update_docs.zsh
+
+# Ignore workspace setting
+nodered-conversation-agent.code-workspace
