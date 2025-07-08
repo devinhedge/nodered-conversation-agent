@@ -3,7 +3,8 @@
 ## 1. Repository and File Structure Changes
 
 ### Current File Structure
-```
+
+```text
 .
 ├── .coveragerc
 ├── .gitignore
@@ -26,7 +27,8 @@
 ```
 
 ### Target File Structure (HACS-compatible with IaC)
-```
+
+```text
 .
 ├── .github/
 │   ├── workflows/
@@ -70,6 +72,7 @@
 ```
 
 ### Necessary Changes
+
 1. Create `.github/workflows/` directory with `hassfest.yaml`, `validate.yaml`, and `release.yaml` workflow files.
 2. Add `.github/ISSUE_TEMPLATE/` directory with `bug_report.md` and `feature_request.md` templates.
 3. Move and expand the `tests/` directory to the root of the project.
@@ -85,6 +88,7 @@
 ## 2. Infrastructure as Code (IaC) Implementation
 
 ### Local Development Environment
+
 1. Create a `.devcontainer/` directory with:
    - `Dockerfile`: Define the development container image.
    - `devcontainer.json`: Configure VS Code development container settings.
@@ -95,33 +99,40 @@
 3. Create `.vscode/tasks.json` to define common development tasks (e.g., running tests, linting).
 
 ### GitHub Actions Workflows
+
 1. Implement `.github/workflows/hassfest.yaml` for validating the integration with Home Assistant standards.
 2. Implement `.github/workflows/validate.yaml` for HACS validation and additional checks.
 3. Keep `.github/workflows/release.yaml` for automating the release process.
 
 ### Issue Templates
+
 1. Create `.github/ISSUE_TEMPLATE/bug_report.md` for standardized bug reporting.
 2. Create `.github/ISSUE_TEMPLATE/feature_request.md` for standardized feature requests.
 
 ### Pre-commit Configuration
+
 1. Create `.pre-commit-config.yaml` to define pre-commit hooks for code quality checks.
 
 ## 3. Code Refactoring
 
 ### __init__.py
+
 1. Remove pylint comments and update import statements to use relative imports.
 2. Implement proper error handling and logging throughout the file.
 3. Refactor the `NodeRedAgent` class to follow HACS best practices.
 4. Implement type hinting consistently throughout the file.
 
 ### config_flow.py
+
 1. Review and update the config flow implementation to ensure it follows HACS standards.
 2. Implement proper error handling and validation for user inputs.
 
 ### const.py
+
 1. Review and update constant definitions to ensure they follow HACS naming conventions.
 
 ### manifest.json
+
 1. Update the `version` field to use semantic versioning (e.g., "1.0.0").
 2. Add an `issue_tracker` field with the URL to the GitHub issues page.
 3. Update the `documentation` field to point to the GitHub repository's README.md.
@@ -129,6 +140,7 @@
 ## 4. HACS Compliance
 
 ### hacs.json
+
 Create a new `hacs.json` file in the root directory with the following content:
 
 ```json
@@ -143,6 +155,7 @@ Create a new `hacs.json` file in the root directory with the following content:
 ## 5. Documentation
 
 ### README.md
+
 1. Update the installation instructions to reflect HACS installation method.
 2. Add a badge for HACS default repository status.
 3. Include clear usage instructions and examples.
@@ -150,6 +163,7 @@ Create a new `hacs.json` file in the root directory with the following content:
 5. Update the "Contributing" section to include HACS-specific guidelines.
 
 ### CHANGELOG.md
+
 1. Ensure the changelog follows the Keep a Changelog format.
 2. Add an entry for the HACS compatibility update and infrastructure improvements.
 
