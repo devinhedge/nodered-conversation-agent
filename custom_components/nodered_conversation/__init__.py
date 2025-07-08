@@ -3,11 +3,13 @@ from __future__ import annotations
 
 from functools import partial
 import logging
-import aiohttp
 import json
 import base64
 from typing import Literal
 
+# These imports will be available in a Home Assistant environment
+# pylint: disable=import-error
+import aiohttp
 import voluptuous as vol
 
 from homeassistant.components import conversation
@@ -19,6 +21,7 @@ from homeassistant.core import (
 )
 from homeassistant.helpers import config_validation as cv, intent
 from homeassistant.util import ulid
+# pylint: enable=import-error
 
 from .const import (
     CONF_NODERED_URL,
@@ -26,6 +29,7 @@ from .const import (
     CONF_NODERED_PASS,
     DOMAIN,
 )
+from .repository_structure_validator import check_custom_components_directory
 
 _LOGGER = logging.getLogger(__name__)
 SERVICE_GENERATE_IMAGE = "generate_image"
@@ -130,4 +134,3 @@ class NodeRedAgent(conversation.AbstractConversationAgent):
         return conversation.ConversationResult(
             response=intent_response, conversation_id=conversation_id
         )
-
