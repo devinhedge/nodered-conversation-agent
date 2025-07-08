@@ -12,9 +12,10 @@
       }
     },
     "error": {
-      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
-      "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
-      "unknown": "[%key:common::config_flow::error::unknown%]"
+      "cannot_connect": "Failed to connect to the NodeRed endpoint. Please check the URL and your network connection.",
+      "invalid_auth": "Invalid authentication. Please check your username and password.",
+      "unknown": "An unexpected error occurred. Please check the logs for more information.",
+      "invalid_url": "The provided URL is not valid. Please ensure it starts with http:// or https://."
     }
   },
   "options": {
@@ -25,8 +26,20 @@
           "nodered_user": "NodeRed Endpoint Username",
           "nodered_pass": "NodeRed Endpoint Password"
         },
-        "description": "Enter your NodeRed endpoint URL, Username, and Password.",
+        "description": "Update your NodeRed endpoint settings.",
         "title": "NodeRed Conversation Agent - Options"
+      }
+    }
+  },
+  "services": {
+    "process_conversation": {
+      "name": "Process Conversation",
+      "description": "Send a conversation to the NodeRed endpoint for processing.",
+      "fields": {
+        "message": {
+          "name": "Message",
+          "description": "The message to be processed by the NodeRed conversation agent."
+        }
       }
     }
   }
