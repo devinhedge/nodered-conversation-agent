@@ -1,4 +1,4 @@
-# TODO for the nodered conversation integration
+# All fo the outstanding tasks for the nodered conversation integration
 
 Here's a detailed plan to accomplish our task:
 
