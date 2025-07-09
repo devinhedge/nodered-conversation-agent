@@ -1,0 +1,9 @@
+pytest
+pytest-cov
+pytest-homeassistant-custom-component
+hassil==2.1.0
+homeassistant>=2025.1.4
+dataclasses-json
+antlr4-python3-runtime
+home_assistant_intents
+pytest-asyncio
