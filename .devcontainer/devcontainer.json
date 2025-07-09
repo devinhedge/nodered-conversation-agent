@@ -1,7 +1,6 @@
 {
     "name": "Home Assistant NodeRed Conversation Agent",
-    "dockerFile": "Dockerfile",
-    "context": "..",
+    "image": "ghcr.io/home-assistant/devcontainer:stable",
     "postCreateCommand": "pip install -r requirements.txt -r requirements_dev.txt && mkdir -p /config/custom_components/nodered_conversation && cp -r /workspaces/nodered-conversation-agent/custom_components/nodered_conversation/* /config/custom_components/nodered_conversation/",
     "customizations": {
         "vscode": {

@@ -1,4 +1,33 @@
-# All fo the outstanding tasks for the nodered conversation integration
+# All of the outstanding tasks for the nodered conversation integration
+
+## Dev Container Configuration Plan
+
+- [ ] Review and update .devcontainer/devcontainer.json file
+  - [ ] Update "image" field to use "ghcr.io/home-assistant/devcontainer:stable"
+  - [ ] Remove "dockerFile" and "context" fields
+  - [ ] Update "postCreateCommand" to include necessary setup steps
+    ```json
+    "postCreateCommand": "pip install -r requirements.txt -r requirements_dev.txt && mkdir -p /config/custom_components/nodered_conversation && cp -r /workspaces/nodered-conversation-agent/custom_components/nodered_conversation/* /config/custom_components/nodered_conversation/"
+    ```
+  - [ ] Verify and update VS Code extensions and settings (current settings seem correct)
+- [ ] Update .devcontainer/Dockerfile
+  - [ ] Remove existing Dockerfile content
+  - [ ] Add a comment explaining that we're using a pre-built image instead
+- [ ] Verify and update dependencies
+  - [ ] Review requirements.txt and requirements_dev.txt files
+  - [ ] Update postCreateCommand in devcontainer.json to install dependencies
+- [ ] Review and update .devcontainer/configuration.yaml if necessary
+  - [ ] Ensure it includes minimal configuration for development
+  - [ ] Verify HACS configuration
+- [ ] Update .gitignore file
+  - [ ] Add entries to exclude unnecessary files and directories
+- [ ] Test the updated dev container configuration
+  - [ ] Rebuild and start the dev container
+  - [ ] Verify that Home Assistant starts correctly
+  - [ ] Test basic functionality
+- [ ] Document the changes
+  - [ ] Update README.md with new setup instructions
+  - [ ] Add a section about the development environment
 
 Here's a detailed plan to accomplish our task:
 
