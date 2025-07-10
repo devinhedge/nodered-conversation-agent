@@ -37,24 +37,25 @@ This document records the results of testing the entire setup process for the No
 4. Verify Node-RED installation
    ```
    node-red --version
+   node-red-contrib-home-assistant-websocket --version
    ```
    Result: [Success/Failure, any issues encountered]
 
-5. Install development dependencies
-   ```
-   pip install -r requirements_dev.txt
-   ```
-   Result: [Success/Failure, any issues encountered]
-
-6. Run the test suite
+5. Run the test suite
    ```
    pytest tests
    ```
    Result: [Success/Failure, any issues encountered]
 
-7. Run tests with coverage
+6. Run tests with coverage
    ```
    pytest tests -v --cov=custom_components.nodered_conversation --cov-report=term-missing --cov-report=html
+   ```
+   Result: [Success/Failure, any issues encountered]
+
+7. Verify the custom component symlink in ha-core
+   ```
+   ls -l ha-core/homeassistant/components/nodered_conversation
    ```
    Result: [Success/Failure, any issues encountered]
 
