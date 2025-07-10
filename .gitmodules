@@ -1,0 +1,3 @@
+[submodule "ha-core"]
+	path = ha-core
+	url = https://github.com/devinhedge/ha-core.git
