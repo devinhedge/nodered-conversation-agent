@@ -7,10 +7,6 @@ set -e
 echo "Updating ha-core submodule..."
 ./scripts/update_ha_core.sh
 
-# Install audioop-lts separately
-echo "Installing audioop-lts..."
-pip install audioop-lts==0.2.1
-
 # Install dependencies
 echo "Installing Python dependencies..."
 pip install -r requirements.txt
@@ -18,8 +14,8 @@ pip install -r requirements_dev.txt
 
 # Install ha-core dependencies
 echo "Installing ha-core dependencies..."
-pip install -r ha-core/requirements.txt
-pip install -r ha-core/requirements_test.txt
+pip install --no-deps -r ha-core/requirements.txt
+pip install --no-deps -r ha-core/requirements_test.txt
 
 # Install Node-RED
 echo "Installing Node-RED..."
