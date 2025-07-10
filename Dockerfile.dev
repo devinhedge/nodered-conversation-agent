@@ -1,0 +1,61 @@
+# Use Python 3.11 as the base image (latest stable version supported by Home Assistant)
+FROM python:3.11-slim-buster
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    build-essential \
+    libffi-dev \
+    libssl-dev \
+    libjpeg-dev \
+    zlib1g-dev \
+    autoconf \
+    build-essential \
+    libopenjp2-7 \
+    libtiff5 \
+    libturbojpeg0-dev \
+    tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up a non-root user
+RUN useradd -m -s /bin/bash vscode
+USER vscode
+WORKDIR /home/vscode
+
+# Set up Python environment
+ENV PATH="/home/vscode/.local/bin:${PATH}"
+RUN python -m venv /home/vscode/.local/ha-venv
+ENV PATH="/home/vscode/.local/ha-venv/bin:${PATH}"
+
+# Copy ha-core submodule and custom component
+COPY --chown=vscode:vscode ha-core /home/vscode/ha-core
+COPY --chown=vscode:vscode custom_components/nodered_conversation /home/vscode/ha-core/homeassistant/components/nodered_conversation
+
+# Install ha-core dependencies
+WORKDIR /home/vscode/ha-core
+RUN pip install --no-cache-dir -r requirements_all.txt
+
+# Install development tools
+RUN pip install --no-cache-dir pre-commit flake8
+
+# Install Node.js and npm
+USER root
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+USER vscode
+
+# Install Node-RED
+RUN npm install -g --unsafe-perm node-red
+
+# Set up Home Assistant configuration directory
+RUN mkdir -p /home/vscode/config
+
+# Expose ports for Home Assistant and Node-RED
+EXPOSE 8123 1880
+
+# Set working directory to the config directory
+WORKDIR /home/vscode/config
+
+# Start Home Assistant (in development mode) and Node-RED
+CMD ["bash", "-c", "python -m homeassistant --config /home/vscode/config & node-red"]

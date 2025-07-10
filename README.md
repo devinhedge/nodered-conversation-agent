@@ -71,9 +71,25 @@ Once installed and configured, you can use the NodeRed Conversation agent in var
 
 ## Development
 
-First setup of a proper Home Assistant Development Environment based on [the Home Assistant way](https://developers.home-assistant.io/docs/development_environment).
+This project uses a forked Home Assistant core as a Git submodule for development and testing purposes. To set up the development environment:
 
-TODO: Fill this in.
+1. Clone this repository:
+   ```
+   git clone https://github.com/your-username/nodered-conversation-agent.git
+   cd nodered-conversation-agent
+   ```
+
+2. Initialize and update the ha-core submodule:
+   ```
+   ./scripts/update_ha_core.sh
+   ```
+
+3. Set up the development environment:
+   ```
+   ./scripts/setup_dev_environment.sh
+   ```
+
+For more details on the development process, please refer to our [Contributing Guidelines](CONTRIBUTING.md).
 
 ### Running tests
 
@@ -89,13 +105,11 @@ For tests with coverage reporting:
 pytest tests -v --cov=custom_components.nodered_conversation --cov-report=term-missing --cov-report=html
 ```
 
-```bash
-pytest tests -v --cov=custom_components.nodered_conversation --cov-report=term-missing --cov-report=html
-```
-
 This will run the tests, display a coverage report in the terminal, and generate an HTML coverage report in the `htmlcov` directory.
 
 To view the HTML coverage report, open the `htmlcov/index.html` file in your web browser.
+
+For more information about our testing strategy, please refer to the [Testing Strategy](docs/testing_strategy.md) document.
 
 ## Recent Changes
 
@@ -109,6 +123,9 @@ To view the HTML coverage report, open the `htmlcov/index.html` file in your web
 - Expanded test coverage for NodeRedAgent and config flow
 - Improved installation and development instructions in this README
 - Added HACS installation instructions
+- Implemented comprehensive testing strategy
+- Set up CI/CD pipeline for automated testing and deployment
+- Created scripts for easier development environment setup and testing
 
 ## Offline Reference Documentation for AI Agents
 
@@ -126,7 +143,7 @@ This script clones the latest HACS documentation from the official GitHub reposi
 
 ## Contributing
 
-Contributions are welcome! If you'd like to help improve this integration, please fork the repository and submit a pull request with your changes. Be sure to follow the existing code style, add tests for new functionality, and update documentation as necessary.
+Contributions are welcome! If you'd like to help improve this integration, please fork the repository and submit a pull request with your changes. Be sure to follow the existing code style, add tests for new functionality, and update documentation as necessary. For more details, see our [Contributing Guidelines](CONTRIBUTING.md).
 
 ## License
 

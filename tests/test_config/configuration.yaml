@@ -1,0 +1,9 @@
+# Sample configuration.yaml for testing nodered_conversation component
+default_config:
+
+nodered_conversation:
+  url: "http://localhost:1880"
+  username: "test_user"
+  password: "test_password"
+
+# Add any other necessary configuration for testing

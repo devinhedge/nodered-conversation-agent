@@ -7,3 +7,8 @@ dataclasses-json
 antlr4-python3-runtime
 home_assistant_intents
 pytest-asyncio
+pytest-cov
+flake8
+black
+isort
+mypy

@@ -21,6 +21,9 @@ custom_components/hacs
 .pytest_cache
 .coverage
 htmlcov
+.tox/
+coverage.xml
+*.cover
 
 # Operating System
 .DS_Store
@@ -42,6 +45,7 @@ node_modules
 *.tmp
 *.bak
 *.swp
+
 # Environments
 .env
 .venv
@@ -50,6 +54,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
 # Docs directory
 #docs/
 
@@ -61,3 +66,10 @@ docs/x-reference/*
 
 # Ignore workspace setting
 nodered-conversation-agent.code-workspace
+
+# Dev container
+.devcontainer/Dockerfile
+
+# ha-core submodule
+ha-core/*
+!ha-core/.gitmodule
