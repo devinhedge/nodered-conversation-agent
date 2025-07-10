@@ -7,6 +7,10 @@ set -e
 echo "Updating ha-core submodule..."
 ./scripts/update_ha_core.sh
 
+# Install audioop-lts separately
+echo "Installing audioop-lts..."
+pip install audioop-lts==0.2.1
+
 # Install dependencies
 echo "Installing Python dependencies..."
 pip install -r requirements.txt
