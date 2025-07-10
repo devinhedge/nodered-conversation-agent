@@ -8,7 +8,7 @@ echo "Updating ha-core submodule..."
 ./scripts/update_ha_core.sh
 
 # Install dependencies
-echo "Installing dependencies..."
+echo "Installing Python dependencies..."
 pip install -r requirements.txt
 pip install -r requirements_dev.txt
 
@@ -16,6 +16,11 @@ pip install -r requirements_dev.txt
 echo "Installing ha-core dependencies..."
 pip install -r ha-core/requirements.txt
 pip install -r ha-core/requirements_test.txt
+
+# Install Node-RED
+echo "Installing Node-RED..."
+npm install -g node-red@3.0.2
+npm install -g node-red-contrib-home-assistant-websocket@0.48.0
 
 # Set up pre-commit hooks
 echo "Setting up pre-commit hooks..."

@@ -7,13 +7,18 @@ This document records the results of testing the entire setup process for the No
 - Operating System: [Your OS here]
 - Python Version: [Your Python version]
 - Git Version: [Your Git version]
+- Node.js Version: [Your Node.js version]
+- npm Version: [Your npm version]
 
 ## Steps Followed and Results
 
-1. Clone the repository
+1. Clone the repository, switch to the 'devin' branch, and ensure it's up to date
    ```
    git clone https://github.com/your-username/nodered-conversation-agent.git
    cd nodered-conversation-agent
+   git checkout devin
+   git branch  # Verify that you're on the 'devin' branch
+   git pull origin devin  # Ensure local files match the remote 'devin' branch
    ```
    Result: [Success/Failure, any issues encountered]
 
@@ -29,19 +34,25 @@ This document records the results of testing the entire setup process for the No
    ```
    Result: [Success/Failure, any issues encountered]
 
-4. Install development dependencies
+4. Verify Node-RED installation
+   ```
+   node-red --version
+   ```
+   Result: [Success/Failure, any issues encountered]
+
+5. Install development dependencies
    ```
    pip install -r requirements_dev.txt
    ```
    Result: [Success/Failure, any issues encountered]
 
-5. Run the test suite
+6. Run the test suite
    ```
    pytest tests
    ```
    Result: [Success/Failure, any issues encountered]
 
-6. Run tests with coverage
+7. Run tests with coverage
    ```
    pytest tests -v --cov=custom_components.nodered_conversation --cov-report=term-missing --cov-report=html
    ```

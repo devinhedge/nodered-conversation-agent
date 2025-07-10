@@ -7,5 +7,3 @@ dataclasses-json
 antlr4-python3-runtime
 home_assistant_intents
 pytest-asyncio
-node-red>=3.0.2
-node-red-contrib-home-assistant-websocket>=0.48.0
