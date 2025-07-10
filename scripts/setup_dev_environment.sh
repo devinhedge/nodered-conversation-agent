@@ -23,33 +23,38 @@ log "Starting development environment setup..."
 log "Updating ha-core submodule..."
 ./scripts/update_ha_core.sh
 
+# Deactivate any existing Python environment
+if [[ "$VIRTUAL_ENV" != "" ]]; then
+    log "Deactivating existing Python environment..."
+    deactivate
+fi
+
 # Create and activate virtual environment
 log "Creating virtual environment..."
 python3 -m venv .venv
+log "Activating virtual environment..."
 source .venv/bin/activate
 
-# Ensure we're using the correct Python from the virtual environment
-log "Activating virtual environment..."
-VIRTUAL_ENV_PYTHON=$(which python)
-if [[ $VIRTUAL_ENV_PYTHON != *".venv"* ]]; then
+# Verify the correct environment is activated
+if [[ "$(which python3)" != *".venv/bin/python3" ]]; then
     log "Error: Virtual environment not activated correctly"
     exit 1
 fi
-log "Using Python: $VIRTUAL_ENV_PYTHON"
+log "Using Python: $(which python3)"
 
 # Upgrade pip to latest version
 log "Upgrading pip..."
-$VIRTUAL_ENV_PYTHON -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
 
 # Install ha-core dependencies first
 log "Installing ha-core dependencies..."
-$VIRTUAL_ENV_PYTHON -m pip install --verbose -r ha-core/requirements.txt
-$VIRTUAL_ENV_PYTHON -m pip install --verbose -r ha-core/requirements_test.txt
+pip install --verbose -r ha-core/requirements.txt
+pip install --verbose -r ha-core/requirements_test.txt
 
 # Install project dependencies
 log "Installing project dependencies..."
-$VIRTUAL_ENV_PYTHON -m pip install --verbose -r requirements.txt
-$VIRTUAL_ENV_PYTHON -m pip install --verbose -r requirements_dev.txt
+pip install --verbose -r requirements.txt
+pip install --verbose -r requirements_dev.txt
 
 # Install Node-RED
 log "Installing Node-RED..."
