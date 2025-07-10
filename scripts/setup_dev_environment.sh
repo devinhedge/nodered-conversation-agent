@@ -28,15 +28,28 @@ log "Creating virtual environment..."
 python3 -m venv .venv
 source .venv/bin/activate
 
+# Ensure we're using the correct Python from the virtual environment
+log "Activating virtual environment..."
+VIRTUAL_ENV_PYTHON=$(which python)
+if [[ $VIRTUAL_ENV_PYTHON != *".venv"* ]]; then
+    log "Error: Virtual environment not activated correctly"
+    exit 1
+fi
+log "Using Python: $VIRTUAL_ENV_PYTHON"
+
+# Upgrade pip to latest version
+log "Upgrading pip..."
+$VIRTUAL_ENV_PYTHON -m pip install --upgrade pip
+
 # Install ha-core dependencies first
 log "Installing ha-core dependencies..."
-pip install --verbose -r ha-core/requirements.txt
-pip install --verbose -r ha-core/requirements_test.txt
+$VIRTUAL_ENV_PYTHON -m pip install --verbose -r ha-core/requirements.txt
+$VIRTUAL_ENV_PYTHON -m pip install --verbose -r ha-core/requirements_test.txt
 
 # Install project dependencies
 log "Installing project dependencies..."
-pip install --verbose -r requirements.txt
-pip install --verbose -r requirements_dev.txt
+$VIRTUAL_ENV_PYTHON -m pip install --verbose -r requirements.txt
+$VIRTUAL_ENV_PYTHON -m pip install --verbose -r requirements_dev.txt
 
 # Install Node-RED
 log "Installing Node-RED..."
