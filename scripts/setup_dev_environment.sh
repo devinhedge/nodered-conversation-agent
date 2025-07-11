@@ -24,16 +24,16 @@ log "Updating ha-core submodule..."
 ./scripts/update_ha_core.sh
 
 # Deactivate any existing Python environment
-if [[ "$VIRTUAL_ENV" != "" ]]; then
-    log "Deactivating existing Python environment..."
-    deactivate
-fi
+#if [[ "$VIRTUAL_ENV" != "" ]]; then
+#    log "Deactivating existing Python environment..."
+#    deactivate
+#fi
 
 # Create and activate virtual environment
-log "Creating virtual environment..."
-python3 -m venv .venv
-log "Activating virtual environment..."
-source .venv/bin/activate
+#log "Creating virtual environment..."
+#python3 -m venv .venv
+#log "Activating virtual environment..."
+#source .venv/bin/activate
 
 # Verify the correct environment is activated
 if [[ "$(which python3)" != *".venv/bin/python3" ]]; then
